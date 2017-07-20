@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from bookapp.models import Author, Books, Order, Category
 from django.contrib.auth.models import User
@@ -14,7 +14,7 @@ def index(request):
     categories = Category.objects.all()
     context = {"books": books,
                "categories": categories,
-    }
+    }SSS
     return render(request, "bookapp/index.html", context)
 
 def login(request):
@@ -26,7 +26,7 @@ def login(request):
             l.lname = form.cleaned_data['lname']
             l.password = form.cleaned_data['password']
             l.save()
-            return HttpResponse('Hi' + l.fname) 
+            return HttpResponse('Hi' + l.fname)
 
 
 def register(request):
@@ -84,3 +84,6 @@ def order_book(request):
                return HttpResponse ("invalid request")
 
         return redirect("index")
+from django.shortcuts import render
+
+from django.contrib.auth.models import User
