@@ -26,7 +26,7 @@ def login(request):
             l.lname = form.cleaned_data['lname']
             l.password = form.cleaned_data['password']
             l.save()
-            return HttpResponse('Hi' + l.fname) 
+            return HttpResponse('Hi' + l.fname)
 
 
 def register(request):
