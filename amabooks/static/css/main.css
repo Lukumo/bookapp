@@ -1,0 +1,70 @@
+.navbar-brand img {
+height: 100%
+}
+
+.nav form#search {
+float: right;
+padding: 0.5em;
+}
+
+.nav form#search .glyphicon-search {
+z-index: 99;
+position: absolute;
+right: 0.7em;
+top: 50%;
+margin-top: -0.44em;
+}
+
+.nav form#search .input-group .form-control {
+border-radius: 0.25em;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #FFF;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #FFF;
+}
+
+.navbar-default .navbar-nav > .active > a {
+background-color: transparent;
+color: #FFF;
+padding-bottom: 10px;
+border-bottom: 5px solid #FFF;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+color: #FFF;
+-webkit-transition: all 150ms ease-in-out;
+-moz-transition: all 150ms ease-in-out;
+-ms-transition: all 150ms ease-in-out;
+-o-transition: all 150ms ease-in-out;
+transition: all 150ms ease-in-out;
+}
+
+.navbar-default .navbar-nav > .active > a {
+background-color: transparent;
+color: #FFF;
+padding-bottom: 0.62em;
+border-bottom: 0.45em solid #FFF;}
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > li > a:hover {
+background-color: transparent;
+color: #F3F3F3;
+padding-bottom: 0.62em;
+border-bottom: 0.45em solid #F3F3F3;
+}
