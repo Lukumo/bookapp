@@ -1,0 +1,107 @@
+{% load staticfiles %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="screen" title="no title">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" media="screen" title="no title">
+  <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" media="screen" title="no title">
+  <title>Amabooks</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="webapp.html"><img src="imgs/logo.png" class="img-responsive"></a>
+        <butt on type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+      </div>
+      <div id="nav-menu" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"><span class="glyphicons glyphicons-home" aria-hidden = "true"></span>Home</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal" ><span class="glyphicons glyphicons-group" aria-hidden = "true"></span>Add New Item</a></li>
+          <li><a href="#"><span class = "glyphicons glyphicons-user" aria-hidden = "true">About</a></li>
+          <li><a href="#"><span class="glyphicons glyphicons-log-out" aria-hidden = "true">Log out</a></li>
+        </ul>
+        <form id="search" role="search">
+          <div class="input-group navbar-right">
+            <div class="input-group margin-bottom-sm">
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
+              <input class="form-control" type="text" placeholder="Search...">
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+
+        <div class="modal-body">
+            <!-- Upload Form -->
+            <form class="upload_new_item" method="post" >
+               {% csrf_token %}
+               <div class="form-group">
+                 <label for="category">Title</label>
+                 <input type="text" class="form-control" id="categoryName" placeholder="Book title" name="name">
+               </div>
+               <div class="form-group">
+                 <label for="task">Preface</label>
+                 <textarea class="form-control" rows="3" placeholder=
+                 "Preface" name="preface"></textarea>
+               </div>
+               <div class="form-group">
+                 <label for="category">Price(ZMK)</label>
+                 <input type="number"  min="1" step="any" src= "" class="form-control" id="categoryName" placeholder="Price" name="name">
+               </div>
+               <div class="form-group">
+                 <label for="category">Cover Image</label>
+                 <input type="image" class="form-control" id="categoryName" placeholder="Image" name="name">
+               </div>
+               <div class="form-group">
+                 <select class="" name="category">
+                   {% for cat in categories  %}
+                   <option value="{{cat.id}}">{{cat.name}}</option>
+                   {% endfor %}
+                 </select>
+               </div>
+               <div class="form-group">
+                 <select class="" name="category">
+                   {% for a in author  %}
+                   <option value="{{a.id}}">{{a.name}}</option>
+                   {% endfor %}
+                 </select>
+               </div>
+               <button type="submit" class="btn btn-default" name="Sign up">Sign Up</button>
+            </form>
+
+        </div>
+        <div class="modal-footer"->
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close</button>
+          <button type="button" class="btn btn-primary" id="save_button">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock content %}
+  <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

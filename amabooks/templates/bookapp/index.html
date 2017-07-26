@@ -1,0 +1,22 @@
+{% extends "bookapp/base.html" %}
+
+{% block content %}
+<!--- Main body goes here --->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Books</h1>
+      </div>
+      <div class="col-md-8">
+        <h1>News feed</h1>
+        {%  for b in book %}
+          <h2>{{b.title}}</h2>
+          <p>{{b.preface}}</p>
+          <p>{{b.price}}</p>
+          <p>{{b.author_id}}</p>
+          <p>{{b.category_id}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}
