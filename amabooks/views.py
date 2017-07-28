@@ -1,23 +1,25 @@
-from django.shortcuts import render
+
+from django.shortcuts import render, redirect
+from amabooks.models import Author, Book, Order, Category
 from django.contrib.auth.models import User
-from bookapp.models import Author, Books, Order, Category
-from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 from .forms import RegisterForm
 from .forms import LoginForm
-from .forms import BookForm
-from .forms import OrderForm
-
+from .forms import UploadForm
+from .forms import Order_bookForm
+from django.contrib.auth import login,authenticate
 
 
 def index(request):
-    books = Books.objects.order_by('-date_created')
+    books = Book.objects.order_by('name')
     categories = Category.objects.all()
     context = {"books": books,
                "categories": categories,
     }
     return render(request, "bookapp/index.html", context)
 
-def login(request):
+def login(request,user):
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -28,34 +30,38 @@ def login(request):
             l.save()
             return HttpResponse('Hi' + l.fname)
 
-
-def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            r = RegisterForm
-            r.fname = form.cleaned_data['fname']
-            r.lname= form.cleaned_data['lname']
-            r.email= form.cleaned_data['email']
-            r.password = form.cleaned_data['password']
-            r.confirmpassword= form.cleaned_data['confirmpassword']
-            r.save()
-            return HttpResponse( 'welcome' +r.fname)
         else:
             return HttpResponse('invalid request')
-    return redirect('index')
 
+    return render(request, "bookapp/login.html")
 
-def authors(request):
-    authors = Author.objects.all()
-    context = { 'authors':authors
+def register(request):
 
-    }
-    return render(request, 'book/authors.html', context)
-
-def new_book(request):
+    form = RegisterForm(request.POST)
     if request.method == 'POST':
+       if form.is_valid():
+           form.save()
+           username = form.cleaned_data.get('username')
+           raw_password = form.cleaned_data.get('password1')
+           user = authenticate(username=username, password=raw_password)
+           login(request, user)
+           return redirect('bookapp/index.html')
+       else:
+           form = RegisterForm()
+       return render(request, 'bookapp/registration.html', {'form': form})
+    return redirect('bookapp/index.html')
+
+
+
+def upload(request):
+    if request.method == 'POST':
+
+
         form = BookForm(request.POST)
+
+        form = UploadForm(request.POST)
+
+
         if form.is_valid():
             b= Books()
             b.name =form.cleaned_data['name']
@@ -73,7 +79,7 @@ def new_book(request):
 
 def order_book(request):
         if request.method == 'POST':
-            form = BookForm(request.POST)
+
             if form.is_valid():
                 o = Orders()
                 o.book_id = form.cleaned_data['book_id']
