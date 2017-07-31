@@ -68,3 +68,14 @@ color: #F3F3F3;
 padding-bottom: 0.62em;
 border-bottom: 0.45em solid #F3F3F3;
 }
+
+.container {
+    width: 960px;
+}
+.container {
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.container, .container-wide {
+    position: relative;
+}

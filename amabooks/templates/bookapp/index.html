@@ -1,22 +1,23 @@
 {% extends "bookapp/base.html" %}
-
 {% block content %}
-<!--- Main body goes here --->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h1>Books</h1>
-      </div>
-      <div class="col-md-8">
-        <h1>News feed</h1>
-        {%  for b in book %}
-          <h2>{{b.title}}</h2>
-          <p>{{b.preface}}</p>
-          <p>{{b.price}}</p>
-          <p>{{b.author_id}}</p>
-          <p>{{b.category_id}}</p>
-        {% endfor %}
-      </div>
+<div class="container" role = "main">
+    {% for b in books %}
+    <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object"  src="http://placehold.it/125x125" alt="..." class="img-rounded">
+      </a>
     </div>
-  </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{b.name}}</h4>
+      <p>{{b.preface}}</p>
+      <p>{{b.price}}</p>
+      <p>{{b.author_id}}</p>
+      <p>{{b.category_id}}</p>
+    </div>
+    </div>
+      <h2></h2>
+
+    {% endfor %}
+</div>
 {% endblock content %}

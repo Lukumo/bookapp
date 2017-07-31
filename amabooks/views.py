@@ -17,7 +17,7 @@ def index(request):
     }
     return render(request, "bookapp/index.html", context)
 
-def login(request,user):
+def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
