@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from amabooks.models import Author, Book, Order, Category
@@ -13,7 +13,7 @@ def index(request):
     categories = Category.objects.all()
     context = {"books": books,
                "categories": categories,
-               "author":author
+               "author":author,
     }
     return render(request, "bookapp/index.html", context)
 
@@ -48,22 +48,6 @@ def register(request):
             form = RegisterForm()
     return render(request, 'bookapp/registration.html', {'form': form})
     return redirect('bookapp/index.html')
-    # form = RegisterForm(request.POST)
-    # context = {"form" : form}
-    # if request.method == 'POST':
-    #     if form.is_valid():
-    #         r = RegisterForm
-    #         r.fname = form.cleaned_data['fname']
-    #         r.lname= form.cleaned_data['lname']
-    #         r.email= form.cleaned_data['email']
-    #         r.password = form.cleaned_data['password']
-    #         r.confirmpassword= form.cleaned_data['confirmpassword']
-    #         r.save()
-    #         return HttpResponse( 'welcome' +r.fname)
-    #     else:
-    #         return HttpResponse('invalid request')
-    # return render(request, "bookapp/registration.html",context)
-
 
 
 def upload(request):
@@ -74,9 +58,9 @@ def upload(request):
             b.name =form.cleaned_data['name']
             b.preface=form.cleaned_data['preface']
             b.price= form.cleaned_data['price']
+            b.picture = form.cleaned_data['picture']
             b.category_id= form.cleaned_data['category_id']
             b.author_id = form.cleaned_data['author_id']
-            b.user= User.objects.get(pk = 1)
             b.save()
             return HttpResponse(b.name+' created')
         else:

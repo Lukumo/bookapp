@@ -1,22 +1,21 @@
 {% extends "bookapp/base.html" %}
+{% load staticfiles %}
 {% block content %}
 <div class="container" role = "main">
     {% for b in books %}
     <div class="media">
     <div class="media-left">
       <a href="#">
-        <img class="media-object"  src="http://placehold.it/125x125" alt="..." class="img-rounded">
+        <img class="media-object"   src="/static/img/open.jpeg" alt="Cover Image" class="img-rounded" width="160" height="160" border="5">
       </a>
     </div>
     <div class="media-body">
-      <h4 class="media-heading">{{b.name}}</h4>
+      <h2 class="media-heading">{{b.name}}</h2>
       <p>{{b.preface}}</p>
       <p>{{b.price}}</p>
-      <p>{{b.author_id}}</p>
-      <p>{{b.category_id}}</p>
+      <p>{{b.author}}</p>
     </div>
     </div>
-      <h2></h2>
 
     {% endfor %}
 </div>

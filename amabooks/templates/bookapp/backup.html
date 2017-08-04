@@ -1,0 +1,138 @@
+<div class="container">
+  <div class="navbar-header navbar-left">
+    <img src="/static/img/logo.jpg" width="70" height="70" class="d-inline-block align-top" alt="">
+    <b class="navbar-brand pull-left" id = "header">Amabooks</b>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+  </div>
+  <div id="nav-menu" class="collapse navbar-collapse ">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"><span class="glyphicons glyphicons-home" aria-hidden = "true"></span>Home</a></li>
+      <li class="active"><a href="#" id data-toggle="modal" data-target="#myModal"><span class="glyphicons glyphicons-group" aria-hidden = "true"></span>Add New Item</a></li>
+      <li class="active"><a href="{% url 'register' %}"><span class = "glyphicons glyphicons-user" aria-hidden = "true">Register</a></li>
+      <li class="dropdown">
+        <a class ="dropdown-toggle" data-toggle = "dropdown" href="#">Categories
+          <span class="caret" aria-hidden = "true"></span></a>
+          <ul class = "dropdown-menu">
+            <li></li>
+
+          </ul>
+        </li>
+    </ul>
+    <form id="search" role="search">
+      <div class="input-group navbar-right">
+        <div class="input-group margin-bottom-sm">
+          <span class="input-group-addon"><i class="fa fa-search"></i></span>
+          <input class="form-control" type="text" placeholder="Search...">
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+css
+.navbar-brand img {
+height: 100%
+}
+
+.navbar-inverse {
+    background-color: #0c1a1e;
+    border-color: #030033;
+}
+
+#header{
+  color:white;
+  font-size: 20px;
+}
+
+.nav form#search {
+float: right;
+padding: 0.5em;
+}
+
+.nav form#search .glyphicon-search {
+z-index: 99;
+position: absolute;
+right: 0.7em;
+top: 50%;
+margin-top: -0.44em;
+}
+
+.nav form#search .input-group .form-control {
+border-radius: 0.25em;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #FFF;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #FFF;
+}
+
+.navbar-default .navbar-nav > .active > a {
+background-color: transparent;
+color: #FFF;
+padding-bottom: 10px;
+border-bottom: 5px solid #FFF;
+}
+
+.navbar-default {
+background-color: #2F92CA;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+color: #FFF;
+-webkit-transition: all 150ms ease-in-out;
+-moz-transition: all 150ms ease-in-out;
+-ms-transition: all 150ms ease-in-out;
+-o-transition: all 150ms ease-in-out;
+transition: all 150ms ease-in-out;
+}
+
+.navbar-default .navbar-nav > .active > a {
+background-color: transparent;
+color: #FFF;
+padding-bottom: 0.62em;
+border-bottom: 0.45em solid #FFF;}
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > li > a:hover {
+background-color: transparent;
+color: #F3F3F3;
+padding-bottom: 0.62em;
+border-bottom: 0.45em solid #F3F3F3;
+}
+
+.container {
+    width: 960px;
+}
+.container {
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.container, .container-wide {
+    position: relative;
+}
